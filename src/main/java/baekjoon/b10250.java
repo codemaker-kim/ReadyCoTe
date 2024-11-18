@@ -3,7 +3,6 @@ package baekjoon;
 import java.util.Scanner;
 
 public class b10250 {
-    static int[][] ACM;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -14,9 +13,11 @@ public class b10250 {
             int W = sc.nextInt();
             int N = sc.nextInt();
 
-            ACM = new int[H][W];
+            StringBuilder sb = new StringBuilder();
 
-            
+            sb.append(N%H == 0 ? H : N%H).append(N/H > 9 ? (N/H)+1 : "0" + ((N/H)+1));
+
+            System.out.println(sb);
         }
     }
 }
