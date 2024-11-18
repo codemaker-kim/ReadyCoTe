@@ -8,16 +8,16 @@ public class b10250 {
 
         int T = sc.nextInt();
 
-        for(int i=0; i<T; i++) {
+        for (int t = 0; t < T; t++) {
             int H = sc.nextInt();
             int W = sc.nextInt();
             int N = sc.nextInt();
 
-            StringBuilder sb = new StringBuilder();
+            int floor = (N % H == 0) ? H : (N % H);
+            int room = (N + H - 1) / H;
 
-            sb.append(N%H == 0 ? H : N%H).append(N/H > 9 ? (N/H)+1 : "0" + ((N/H)+1));
-
-            System.out.println(sb);
+            System.out.printf("%d%02d\n", floor, room);
         }
+        sc.close();
     }
 }

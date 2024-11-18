@@ -6,10 +6,11 @@ public class b10951 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String[] str = sc.nextLine().split("\n");
+        while(sc.hasNext()) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
 
-        for(int i=0; i<str.length; i++) {
-            System.out.println(Integer.parseInt(Character.toString(str[i].charAt(0))) + Integer.parseInt(Character.toString(str[i].charAt(2))));
+            System.out.println(a+b);
         }
     }
 }
