@@ -22,7 +22,7 @@ public class b1654 {
             lanWires.add(Integer.parseInt(br.readLine()));
         }
 
-        
+        // 아 너무 아이디어가 안떠오른다..
 
     }
 }
