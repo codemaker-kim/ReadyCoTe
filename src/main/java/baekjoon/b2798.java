@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class b2798{
-    static boolean[] visited;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int mostNear = 0;
@@ -16,12 +15,21 @@ public class b2798{
 
         int N = Integer.parseInt(NM[0]);
         int M = Integer.parseInt(NM[1]);
-        visited = new boolean[N];
 
-        List<Integer> cards = Arrays.stream(br.readLine().split(" "))
-                .map(Integer::parseInt)
-                .toList();
+        String[] cards = br.readLine().split(" ");
 
-        //구현 로직
+        for(int i=0; i<N-2; i++) {
+            for(int j=i+1; j<N-1; j++){
+                for(int k=j+1; k<N; k++) {
+                    int tmp = Integer.parseInt(cards[i]) + Integer.parseInt(cards[j]) + Integer.parseInt(cards[k]);
+
+                    if(tmp <= M && tmp > mostNear) {
+                        mostNear = tmp;
+                    }
+                }
+            }
+        }
+
+        System.out.println(mostNear);
     }
 }
