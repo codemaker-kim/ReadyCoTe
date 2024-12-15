@@ -12,9 +12,13 @@ public class b15829 {
         String[] L = br.readLine().split("");
 
         long ans = 0;
+        long M = 1234567891;
+        long pow = 1;
+
         for(int i=0; i<N; i++) {
             int tmp = L[i].charAt(0)-96;
-            ans+=(tmp*Math.pow(31, i));
+            ans = (ans + tmp * pow) % M;
+            pow = (pow * 31) % M;
         }
 
         System.out.println(ans);
