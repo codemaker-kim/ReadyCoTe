@@ -11,14 +11,14 @@ public class b10989 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
-        ArrayList<Integer> arr = new ArrayList<>();
+        ArrayList<Short> arr = new ArrayList<>();
 
         for(int i=0; i<N; i++) {
-            arr.add(Integer.parseInt(br.readLine()));
+            arr.add(Short.parseShort(br.readLine()));
         }
 
         Collections.sort(arr);
-        for(int i : arr) {
+        for(short i : arr) {
             System.out.println(i);
         }
     }
