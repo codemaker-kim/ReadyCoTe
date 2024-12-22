@@ -15,7 +15,7 @@ public class b11651 {
         }
 
         Arrays.sort(points, (p1, p2) -> {
-            if (p1[1]==p2[1]) {
+            if (p1[1] == p2[1]) {
                 return Integer.compare(p1[0], p2[0]);
             }
             return Integer.compare(p1[1], p2[1]);
