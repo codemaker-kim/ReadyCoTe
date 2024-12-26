@@ -1,38 +1,44 @@
 package baekjoon;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
 
 public class b4949 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Stack<Character> st = new Stack<>();
 
-        while(true) {
+        while (true) {
             String tmp = br.readLine();
-            if(tmp.equals(".")) {
-                System.out.println("yes");
-                break;
-            }
+            if (tmp.equals(".")) break;
+
             st.clear();
-            for(int i=0; i<tmp.length(); i++) {
-                if(tmp.charAt(i)=='(' || tmp.charAt(i)=='[') {
-                    st.push(tmp.charAt(i));
-                } else if(tmp.charAt(i)==')' || tmp.charAt(i)==']') {
-                    char brac = tmp.charAt(i);
-                    if(!st.isEmpty() && brac==')' && st.peek()=='(')
+            boolean isBalanced = true;
+
+            for (char c : tmp.toCharArray()) {
+                if (c == '[' || c == '(') {
+                    st.push(c);
+                } else if (c == ']' || c == ')') {
+                    if (st.isEmpty()) {
+                        isBalanced = false;
+                        break;
+                    }
+
+                    char top = st.peek();
+                    if ((c == ']' && top == '[') || (c == ')' && top == '(')) {
                         st.pop();
-                    else if(!st.isEmpty() && brac==']' && st.peek()=='[')
-                        st.pop();
+                    } else {
+                        isBalanced = false;
+                        break;
+                    }
                 }
             }
 
-            if(st.isEmpty())
+            if (isBalanced && st.isEmpty()) {
                 System.out.println("yes");
-            else
+            } else {
                 System.out.println("no");
+            }
         }
     }
 }
