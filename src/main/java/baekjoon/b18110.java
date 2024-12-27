@@ -14,7 +14,7 @@ public class b18110 {
         int n = sc.nextInt();
         if(n==0){
             System.out.println(0);
-            System.exit(0);
+            return;
         }
 
         int[] opinions = new int[n];
@@ -23,21 +23,17 @@ public class b18110 {
             opinions[i] = sc.nextInt();
         }
 
-        Arrays.sort(opinions);
+        Arrays.parallelSort(opinions);
 
-        int size = opinions.length;
+        int unnecessary = (int) Math.round(n*0.15);
 
-        double tmp = size * 0.15;
+        int sum = 0;
 
-        int unnecessary = (int) Math.round(tmp);
-
-        double aver = 0;
-
-        for(int i=unnecessary; i<=size-(unnecessary+1); i++) {
-            aver+=opinions[i];
+        for(int i=unnecessary; i<=n-(unnecessary+1); i++) {
+            sum+=opinions[i];
         }
 
-        aver /= (size-unnecessary*2);
-        System.out.println(Math.round(aver));
+        int res = (int) Math.round((double)sum / (n-unnecessary*2));
+        System.out.println(res);
     }
 }
