@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/BaekjoonUtils.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/BaekjoonUtils.java" />
+              <option name="updatedContent" value="package baekjoon;&#10;&#10;/**&#10; * 백준 문제 해결을 위한 유틸리티 클래스&#10; */&#10;public class BaekjoonUtils {&#10;    &#10;    /**&#10;     * value와 target 변수의 절댓값 차이를 계산하는 함수&#10;     * @param value 첫 번째 값&#10;     * @param target 목표 값&#10;     * @return value와 target의 절댓값 차이&#10;     */&#10;    public static int getAbsoluteDifference(int value, int target) {&#10;        return Math.abs(value - target);&#10;    }&#10;    &#10;    /**&#10;     * value와 target 변수의 절댓값 차이를 계산하는 함수 (long 타입)&#10;     * @param value 첫 번째 값&#10;     * @param target 목표 값&#10;     * @return value와 target의 절댓값 차이&#10;     */&#10;    public static long getAbsoluteDifference(long value, long target) {&#10;        return Math.abs(value - target);&#10;    }&#10;    &#10;    /**&#10;     * value와 target 변수의 절댓값 차이를 계산하는 함수 (double 타입)&#10;     * @param value 첫 번째 값&#10;     * @param target 목표 값&#10;     * @return value와 target의 절댓값 차이&#10;     */&#10;    public static double getAbsoluteDifference(double value, double target) {&#10;        return Math.abs(value - target);&#10;    }&#10;    &#10;    /**&#10;     * 두 값 중 target에 더 가까운 값을 반환하는 함수&#10;     * @param value1 첫 번째 값&#10;     * @param value2 두 번째 값&#10;     * @param target 목표 값&#10;     * @return target에 더 가까운 값&#10;     */&#10;    public static int getCloserValue(int value1, int value2, int target) {&#10;        int diff1 = getAbsoluteDifference(value1, target);&#10;        int diff2 = getAbsoluteDifference(value2, target);&#10;        return (diff1 &lt;= diff2) ? value1 : value2;&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b1271.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b1271.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.math.BigInteger;&#10;import java.util.Scanner;&#10;&#10;public class b1271 {&#10;    public static void main(String[] args) {&#10;        Scanner sc = new Scanner(System.in);&#10;&#10;        // 큰 수 입력받기&#10;        BigInteger n = sc.nextBigInteger(); // 총 금액&#10;        BigInteger m = sc.nextBigInteger(); // 사람 수&#10;&#10;        // 몫 계산&#10;        BigInteger quotient = n.divide(m);&#10;        // 나머지 계산&#10;        BigInteger remainder = n.remainder(m);&#10;&#10;        // 결과 출력&#10;        System.out.println(quotient);&#10;        System.out.println(remainder);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2475.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2475.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.util.Scanner;&#10;&#10;public class b2475 {&#10;    public static void main(String[] args) {&#10;        Scanner sc = new Scanner(System.in);&#10;        int ans = 0;&#10;&#10;        for(int i=0; i&lt;5; i++) {&#10;            int n = sc.nextInt();&#10;            ans+= (n*n);&#10;        }&#10;&#10;        System.out.println(ans%10);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b25083.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b25083.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;public class b25083 {&#10;    public static void main(String[] args) {&#10;        System.out.println(&quot;         ,r'\&quot;7&quot;);&#10;        System.out.println(&quot;r`-_   ,'  ,/&quot;);&#10;        System.out.println(&quot; \\. \&quot;. L_r'&quot;);&#10;        System.out.println(&quot;   `~\\/&quot;);&#10;        System.out.println(&quot;      |&quot;);&#10;        System.out.println(&quot;      |&quot;);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2743.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2743.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.util.Scanner;&#10;&#10;public class b2743 {&#10;    public static void main(String[] args) {&#10;        Scanner sc = new Scanner(System.in);&#10;&#10;        String s = sc.nextLine();&#10;&#10;        System.out.println(s.length());&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b27866.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b27866.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;&#10;public class b27866 {&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;&#10;        String s = br.readLine();&#10;        int i = Integer.parseInt(br.readLine());&#10;&#10;        System.out.println(s.charAt(i-1));&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b28702.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b28702.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;import java.util.ArrayList;&#10;&#10;public class b28702 {&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;        ArrayList&lt;String&gt; arr = new ArrayList&lt;&gt;();&#10;&#10;        for(int i=0; i&lt;3; i++) {&#10;            arr.add(br.readLine());&#10;        }&#10;&#10;        for(int i=1; i&lt;=3; i++) {&#10;            try{&#10;                int ans = Integer.parseInt(arr.get(i-1));&#10;                if((ans+4-i) % 15 == 0){&#10;                    System.out.println(&quot;FizzBuzz&quot;);&#10;                    break;&#10;                } else if((ans+4-i) % 3 == 0){&#10;                    System.out.println(&quot;Fizz&quot;);&#10;                    break;&#10;                } else if((ans+4-i) % 5 == 0){&#10;                    System.out.println(&quot;Buzz&quot;);&#10;                    break;&#10;                } else{&#10;                    System.out.println(ans+4-i);&#10;                    break;&#10;                }&#10;            } catch (NumberFormatException e){&#10;            }&#10;        }&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2920.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b2920.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;&#10;public class b2920 {&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;        String s = br.readLine();&#10;        switch (s){&#10;            case &quot;1 2 3 4 5 6 7 8&quot;:&#10;                System.out.println(&quot;ascending&quot;);&#10;                break;&#10;            case &quot;8 7 6 5 4 3 2 1&quot;:&#10;                System.out.println(&quot;descending&quot;);&#10;                break;&#10;            default:&#10;                System.out.println(&quot;mixed&quot;);&#10;        }&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b30802.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b30802.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;import java.util.ArrayList;&#10;import java.util.Arrays;&#10;import java.util.stream.Collectors;&#10;&#10;public class b30802 {&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;&#10;        int N = Integer.parseInt(br.readLine());&#10;&#10;        ArrayList&lt;Integer&gt; S = Arrays.stream(br.readLine().split(&quot; &quot;))&#10;                                        .map(Integer::parseInt)&#10;                                        .collect(Collectors.toCollection(ArrayList::new));&#10;&#10;        ArrayList&lt;Integer&gt; list = Arrays.stream(br.readLine().split(&quot; &quot;))&#10;                                        .map(Integer::parseInt)&#10;                                        .collect(Collectors.toCollection(ArrayList::new));&#10;&#10;        int T = list.get(0);&#10;        int P = list.get(1);&#10;&#10;        int T_ans = 0;&#10;&#10;        for(int i : S) {&#10;            if(i % T == 0) {&#10;                T_ans += (i / T);&#10;            } else {&#10;                T_ans += (i / T) + 1;&#10;            }&#10;        }&#10;&#10;        System.out.println(T_ans);&#10;        System.out.println(N / P + &quot; &quot; + N % P);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b31403.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b31403.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;import java.util.Scanner;&#10;&#10;public class b31403 {&#10;    public static void main(String[] args) {&#10;        Scanner sc = new Scanner(System.in);&#10;&#10;        int a = sc.nextInt();&#10;        int b = sc.nextInt();&#10;        int c = sc.nextInt();&#10;&#10;        System.out.println(a+b-c);&#10;        System.out.println(Integer.parseInt(&quot;&quot;+a+b)-c);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b5338.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/bronze/b5338.java" />
+              <option name="updatedContent" value="package baekjoon.bronze;&#10;&#10;public class b5338 {&#10;    public static void main(String[] args) {&#10;        System.out.println(&quot;       _.-;;-._&quot;);&#10;        System.out.println(&quot;'-..-'|   ||   |&quot;);&#10;        System.out.println(&quot;'-..-'|_.-;;-._|&quot;);&#10;        System.out.println(&quot;'-..-'|   ||   |&quot;);&#10;        System.out.println(&quot;'-..-'|_.-''-._|&quot;);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/gold/b1003.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/gold/b1003.java" />
+              <option name="updatedContent" value="package baekjoon.gold;&#10;&#10;public class b1003 {&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/silver/b1018.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/silver/b1018.java" />
+              <option name="updatedContent" value="package baekjoon.silver;&#10;&#10;import java.util.Scanner;&#10;&#10;public class b1018 {&#10;    public static boolean[][] arr;&#10;    public static int min = 64;&#10;&#10;    public static void main(String[] args) {&#10;&#10;        Scanner sc = new Scanner(System.in);&#10;&#10;        int N = sc.nextInt();&#10;        int M = sc.nextInt();&#10;&#10;        arr = new boolean[N][M];&#10;&#10;        // 배열 입력&#10;        for (int i=0; i&lt;N; i++) {&#10;            String str = sc.next();&#10;&#10;            for (int j= 0; j&lt;M; j++) {&#10;                if (str.charAt(j) == 'W') {&#10;                    arr[i][j] = true;&#9;&#9;// W일 때는 true&#10;                } else {&#10;                    arr[i][j] = false;&#9;&#9;// B일 때는 false&#10;                }&#10;&#10;            }&#10;        }&#10;&#10;        int N_row = N-7;&#10;        int M_col = M-7;&#10;&#10;        for (int i=0; i&lt;N_row; i++) {&#10;            for (int j=0; j&lt;M_col; j++) {&#10;                reColoring(i, j);&#10;            }&#10;        }&#10;        System.out.println(min);&#10;    }&#10;&#10;&#10;    public static void reColoring(int row, int col) {&#10;        int end_x = row+8;&#10;        int end_y = col+8;&#10;        int count = 0;&#10;&#10;        boolean TF = arr[row][col];&#9;// 첫 번째 칸의 색&#10;&#10;        for (int i=row; i &lt; end_x; i++) {&#10;            for (int j=col; j&lt;end_y; j++) {&#10;&#10;                // 올바른 색이 아닐경우 count 1 증가&#10;                if(arr[i][j] != TF) {&#10;                    count++;&#10;                }&#10;                /*&#10;                 * 다음 칸은 색이 바뀌므로&#10;                 * true라면 false로, false 라면 true 로&#10;                 * 값을 변경한다.&#10;                 */&#10;                TF = (!TF);&#10;            }&#10;&#10;            TF = !TF;&#10;        }&#10;&#10;        /*&#10;         *  첫 번째 칸을 기준으로 할 때의 색칠 할 개수(count)와&#10;         *  첫 번째 칸의 색의 반대로 할 때의 색칠 할 개수(64 - count) 중 최솟값을&#10;         *  min 과 비교하여 최솟값을 찾는다.&#10;         */&#10;        count = Math.min(count, 64 - count);&#10;&#10;        min = Math.min(min, count);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/silver/b10250.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/silver/b10250.java" />
+              <option name="updatedContent" value="package baekjoon.silver;&#10;&#10;import java.util.Scanner;&#10;&#10;public class b10250 {&#10;    public static void main(String[] args) {&#10;        Scanner sc = new Scanner(System.in);&#10;&#10;        int T = sc.nextInt();&#10;&#10;        for (int t = 0; t &lt; T; t++) {&#10;            int H = sc.nextInt();&#10;            int W = sc.nextInt();&#10;            int N = sc.nextInt();&#10;&#10;            int floor = (N % H == 0) ? H : (N % H);&#10;            int room = (N + H - 1) / H;&#10;&#10;            System.out.printf(&quot;%d%02d\n&quot;, floor, room);&#10;        }&#10;        sc.close();&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/silver/b10773.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/silver/b10773.java" />
+              <option name="updatedContent" value="package baekjoon.silver;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;import java.util.Stack;&#10;&#10;public class b10773 {&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;        int N = Integer.parseInt(br.readLine());&#10;        Stack&lt;Integer&gt; st = new Stack&lt;&gt;();&#10;&#10;        for(int i=0; i&lt;N; i++) {&#10;            int tmp = Integer.parseInt(br.readLine());&#10;            if(tmp!=0)&#10;                st.push(tmp);&#10;            else&#10;                st.pop();&#10;        }&#10;&#10;        int ans = 0;&#10;&#10;        // 만약 i가 st.size()만큼 반복할 경우, 첫 pop을 진행한 후 두 번째 반복을 돌때 size값이 감소함.&#10;        // 따라서 스택 내부를 순회하는 알고리즘으로 변경함.&#10;        for(int i : st) {&#10;            ans+=i;&#10;        }&#10;&#10;        System.out.println(ans);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/silver/b1436.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/silver/b1436.java" />
+              <option name="updatedContent" value="package baekjoon.silver;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;&#10;public class b1436 {&#10;&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;&#10;        int N = Integer.parseInt(br.readLine());&#10;        int endNum = 666;&#10;&#10;        while(N!=0){&#10;            if((endNum+&quot; &quot;).contains(&quot;666&quot;)){&#10;                N-=1;&#10;                if(N==0){&#10;                    break;&#10;                }&#10;                endNum+=1;&#10;            } else&#10;                endNum+=1;&#10;        }&#10;&#10;        System.out.println(endNum);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/baekjoon/silver/b2798.java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/baekjoon/silver/b2798.java" />
+              <option name="updatedContent" value="package baekjoon.silver;&#10;&#10;import java.io.BufferedReader;&#10;import java.io.IOException;&#10;import java.io.InputStreamReader;&#10;&#10;public class b2798{&#10;    public static void main(String[] args) throws IOException {&#10;        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));&#10;        int mostNear = 0;&#10;&#10;        String[] NM = br.readLine().split(&quot; &quot;);&#10;&#10;        int N = Integer.parseInt(NM[0]);&#10;        int M = Integer.parseInt(NM[1]);&#10;&#10;        String[] cards = br.readLine().split(&quot; &quot;);&#10;&#10;        for(int i=0; i&lt;N-2; i++) {&#10;            for(int j=i+1; j&lt;N-1; j++){&#10;                for(int k=j+1; k&lt;N; k++) {&#10;                    int tmp = Integer.parseInt(cards[i]) + Integer.parseInt(cards[j]) + Integer.parseInt(cards[k]);&#10;&#10;                    if(tmp &lt;= M &amp;&amp; tmp &gt; mostNear) {&#10;                        mostNear = tmp;&#10;                    }&#10;                }&#10;            }&#10;        }&#10;&#10;        System.out.println(mostNear);&#10;    }&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
