@@ -3,60 +3,53 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.StringTokenizer;
 
 public class b1654 {
-
-    static List<Integer> wireLength = new ArrayList<>();
-
     public static void main(String[] args) throws IOException {
+        // 1. 입력
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] KN = br.readLine().split(" ");
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int k = Integer.parseInt(KN[0]);
-        int n = Integer.parseInt(KN[1]);
+        int K = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
 
-        List<Integer> lanWires = new ArrayList<Integer>();
+        int[] arr = new int[K];
 
-        // 리스트에 값 삽입
-        for(int i=0; i<k; i++) {
-            lanWires.add(Integer.parseInt(br.readLine()));
+        int max = 0;
+
+        for (int i = 0; i < K; i++) {
+            arr[i] = Integer.parseInt(br.readLine());
+            if (max < arr[i])
+                max = arr[i];
         }
 
-        int maxValue = Collections.max(lanWires);
+        // UpperBound
+        max += 1;
 
-        for(int i = 1; i<=maxValue; i++) {
-            wireLength.add(i);
+        int mid = 0;
+        int min = 0;
+
+        // 경계 조건 - 최댓값과 최솟값이 엇갈리는 시점에 종료
+        while (min < max) {
+
+            mid = (max + min) / 2;
+
+            // 자른 랜선의 갯수
+            int cutWire = 0;
+
+            for (int i = 0; i < arr.length; i++) {
+                cutWire += (arr[i] / mid);
+            }
+
+            if (cutWire < N) {
+                max = mid;
+            } else {
+                min = mid + 1;
+            }
         }
 
-        int size = findMidValue(wireLength.size()-1);
-
-        int result = binarySearch(size, 0, wireLength.size()-1);
-
-        System.out.println(result);
-    }
-
-    static int findMidValue(int value) {
-        return value%2==0 ? value/2 : (value/2)+1;
-    }
-
-    static int binarySearch(int goal, int low, int high) {
-        int mid = findMidValue(wireLength.size()-1);
-
-        while(low <= high){
-            mid = (low + high) / 2;
-
-            if(goal == wireLength.get(mid))
-                return mid;
-            else if(goal < wireLength.get(mid))
-                high = mid-1;
-            else
-                low = mid+1;
-        }
-
-        return mid;
+        System.out.println(min - 1);
     }
 }
