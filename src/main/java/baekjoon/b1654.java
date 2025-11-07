@@ -3,6 +3,8 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class b1654 {
@@ -15,41 +17,40 @@ public class b1654 {
         int K = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[K];
-
-        int max = 0;
+        List<Integer> cables = new ArrayList<>();
 
         for (int i = 0; i < K; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
-            if (max < arr[i])
-                max = arr[i];
+            int cableLength = Integer.parseInt(br.readLine());
+            cables.add(cableLength);
         }
 
-        // UpperBound
-        max += 1;
+        long min = 1;
+        long max = cables.stream()
+                .max(Integer::compareTo)
+                .get();
 
-        int mid = 0;
-        int min = 0;
+        System.out.println(getMid(cables, min, max, N));
+    }
 
-        // 경계 조건 - 최댓값과 최솟값이 엇갈리는 시점에 종료
-        while (min < max) {
+    private static long getMid(List<Integer> cables, long min, long max, int N) {
+        long result = 0;
 
-            mid = (max + min) / 2;
+        while (min <= max) {
+            long mid = (min + max) / 2;
 
-            // 자른 랜선의 갯수
-            int cutWire = 0;
-
-            for (int i = 0; i < arr.length; i++) {
-                cutWire += (arr[i] / mid);
+            long sum = 0;
+            for (int cable : cables) {
+                sum += (cable / mid);
             }
 
-            if (cutWire < N) {
-                max = mid;
-            } else {
+            if (sum >= N) {
+                result = mid;
                 min = mid + 1;
+            } else {
+                max = mid - 1;
             }
         }
 
-        System.out.println(min - 1);
+        return result;
     }
 }
