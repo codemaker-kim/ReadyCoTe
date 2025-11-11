@@ -18,7 +18,6 @@ public class b1931 {
 
         List<Integer[]> meetingTimes = new ArrayList<>();
 
-        // 가능한 회의는 최소 1개.
         int result = 1;
 
         for (int i = 0; i < N; i++) {
@@ -30,33 +29,35 @@ public class b1931 {
         }
 
         meetingTimes.sort(
-                comparingInt((Integer[] meeting) -> meeting[0])
-                        .thenComparingInt(meeting -> meeting[1])
+                comparingInt((Integer[] meeting) -> meeting[1])
+                        .thenComparingInt(meeting -> meeting[0])
         );
 
+        Integer[] meeting = meetingTimes.get(0);
 
         for (int i = 0; i < meetingTimes.size(); i++) {
-            Integer[] meeting = meetingTimes.get(i);
+            Integer[] nextMeeting = meetingTimes.get(i);
 
-            int count = 1;
-            int beforeMeetingFinish = meeting[1];
-
-            for (int j = 0; j < meetingTimes.size(); j++) {
-                if (i == j)
-                    continue;
-
-                Integer[] nextMeeting = meetingTimes.get(j);
-
-                if (beforeMeetingFinish <= nextMeeting[0]) {
-                    count++;
-                    beforeMeetingFinish = nextMeeting[1];
-                }
+            // 같은 회의의 경우 건너 뜀
+            if (Arrays.equals(meeting, nextMeeting)) {
+                continue;
             }
 
-            if (count > result)
-                result = count;
+            // 회의 시작 시간이 같을 경우, 회의 시간이 짧은 쪽으로 변경
+            if (meeting[0].equals(nextMeeting[0])) {
+                if (calculateMeetingTime(meeting) > calculateMeetingTime(nextMeeting)) {
+                    meeting = nextMeeting;
+                }
+            } else if (meeting[1] <= nextMeeting[0]) {
+                result++;
+                meeting = nextMeeting;
+            }
         }
 
         System.out.println(result);
+    }
+
+    private static int calculateMeetingTime(Integer[] meeting) {
+        return Math.abs(meeting[1] - meeting[0]);
     }
 }
