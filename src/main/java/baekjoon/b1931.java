@@ -20,6 +20,7 @@ public class b1931 {
 
         int result = 1;
 
+        // 회의 시간들을 리스트에 저장.
         for (int i = 0; i < N; i++) {
             Integer[] meeting = Arrays.stream(br.readLine().split(" "))
                     .map(Integer::parseInt)
@@ -28,36 +29,30 @@ public class b1931 {
             meetingTimes.add(meeting);
         }
 
+        // 회의 종료 시간을 기준으로 정렬,
+        // 회의 종료 시간이 같다면, 회의 시작 시간 기준으로 정렬
         meetingTimes.sort(
                 comparingInt((Integer[] meeting) -> meeting[1])
                         .thenComparingInt(meeting -> meeting[0])
         );
 
-        Integer[] meeting = meetingTimes.get(0);
+        Integer[] beforeMeeting = meetingTimes.get(0);
 
         for (int i = 0; i < meetingTimes.size(); i++) {
+            // 회의 확인 처리
             Integer[] nextMeeting = meetingTimes.get(i);
 
-            // 같은 회의의 경우 건너 뜀
-            if (Arrays.equals(meeting, nextMeeting)) {
-                continue;
-            }
+            // 이전 회의 종료 시간
+            int beforeMeetingFinishTime = beforeMeeting[1];
 
-            // 회의 시작 시간이 같을 경우, 회의 시간이 짧은 쪽으로 변경
-            if (meeting[0].equals(nextMeeting[0])) {
-                if (calculateMeetingTime(meeting) > calculateMeetingTime(nextMeeting)) {
-                    meeting = nextMeeting;
-                }
-            } else if (meeting[1] <= nextMeeting[0]) {
+            // 이전 회의 종료 시간이 다음 회의 시작 시간보다 작거나 같으면
+            // 갯수를 하나 증가시키고, 이전 회의를 다음 회의로 변경
+            if (beforeMeetingFinishTime <= nextMeeting[0]) {
                 result++;
-                meeting = nextMeeting;
+                beforeMeeting = nextMeeting;
             }
         }
 
         System.out.println(result);
-    }
-
-    private static int calculateMeetingTime(Integer[] meeting) {
-        return Math.abs(meeting[1] - meeting[0]);
     }
 }
