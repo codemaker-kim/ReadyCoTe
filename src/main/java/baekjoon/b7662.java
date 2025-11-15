@@ -3,6 +3,8 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.PriorityQueue;
 
 public class b7662 {
 
@@ -17,14 +19,15 @@ public class b7662 {
         int T = Integer.parseInt(br.readLine());
 
         // k만큼 반복해서 입력받는다.
-        // 입력은 I, 삭제는 D로 입력받는다. D 1은 최댓값 D 2는 최솟값 삭제
+        // 입력은 I, 삭제는 D로 입력받는다. D 1은 최댓값 D -1는 최솟값 삭제
         // 중복 삽입 가능
         // Q가 비어있을 때 D는 무시한다.
         // 최종 연산 시 Q가 비어있을 경우 EMPTY를 출력한다.
 
         for (int i = 0; i < T; i++) {
             int k = Integer.parseInt(br.readLine());
-            int[] pq = new int[k];
+            PriorityQueue<Integer> max_pq = new PriorityQueue<>(Collections.reverseOrder());
+            PriorityQueue<Integer> min_pq = new PriorityQueue<>();
 
             for (int j = 0; j < k; j++) {
                 String[] input = br.readLine().split(" ");
@@ -32,8 +35,29 @@ public class b7662 {
                 String operation = input[0];
                 int value = Integer.parseInt(input[1]);
 
-                
+                switch (operation) {
+                    case INSERT:
+                        max_pq.offer(value);
+                        min_pq.offer(value);
+                        break;
+                    case DELETE:
+                        deleteValue(max_pq, min_pq, value);
+                        break;
+                }
             }
+
+
+        }
+    }
+
+    private static void deleteValue(PriorityQueue<Integer> max_pq,
+                                    PriorityQueue<Integer> min_pq,
+                                    int flag) {
+
+        if (flag == MAX_DEL) {
+            max_pq.poll();
+        } else if (flag == MIN_DEL) {
+            min_pq.poll();
         }
     }
 }
