@@ -22,12 +22,6 @@ public class b7662 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
-        // k만큼 반복해서 입력받는다.
-        // 입력은 I, 삭제는 D로 입력받는다. D 1은 최댓값 D -1는 최솟값 삭제
-        // 중복 삽입 가능
-        // Q가 비어있을 때 D는 무시한다.
-        // 최종 연산 시 Q가 비어있을 경우 EMPTY를 출력한다.
-
         for (int i = 0; i < T; i++) {
             int k = Integer.parseInt(br.readLine());
             PriorityQueue<Integer> max_pq = new PriorityQueue<>(Collections.reverseOrder());
@@ -47,57 +41,60 @@ public class b7662 {
                         checker.put(value, checker.getOrDefault(value, 0) + 1);
                         break;
                     case DELETE:
-                        Integer deletedValue = deleteValue(max_pq, min_pq, value);
-                        Integer put = checker.put(deletedValue, checker.getOrDefault(deletedValue, 1) - 1);
-
-                        if (put.equals(0)) {
-                            checker.remove(deletedValue);
-                        }
-
+                        deleteLogic(max_pq, min_pq, value, checker);
                         break;
                 }
             }
 
-            List<Integer> result = new ArrayList<>();
-
-            while (!max_pq.isEmpty() && !min_pq.isEmpty()) {
-                Integer maxValue = max_pq.peek();
-                Integer minValue = min_pq.peek();
-
-                if (checker.containsKey(maxValue) && checker.get(maxValue) > 0) {
-                    result.add(maxValue);
-                    max_pq.poll();
-                } else {
-                    max_pq.poll();
+            List<Integer> validValues = new ArrayList<>();
+            for (Map.Entry<Integer, Integer> entry : checker.entrySet()) {
+                if (entry.getValue() > 0) {
+                    validValues.add(entry.getKey());
                 }
-
-                if (checker.containsKey(minValue) && checker.get(minValue) > 0) {
-                    if (!result.contains(minValue)) {
-                        result.add(minValue);
-                    }
-                    min_pq.poll();
-                } else {
-                    min_pq.poll();
-                }
-            }
-            if (result.isEmpty()) {
+            } if (validValues.isEmpty()) {
                 System.out.println(EMPTY);
             } else {
-                System.out.println(result.stream().max(Integer::compareTo).get() + " " + result.stream().min(Integer::compareTo).get());
+                Collections.sort(validValues);
+                int min = validValues.get(0);
+                int max = validValues.get(validValues.size() - 1);
+                System.out.println(max + " " + min);
             }
         }
     }
 
-
-    // TODO: 여기서, 2개의 우선순위 큐의 데이터 정합성이 안맞는 문제가 있음. 이걸 해결해야 할 듯.
-    private static Integer deleteValue(PriorityQueue<Integer> max_pq,
-                                       PriorityQueue<Integer> min_pq,
-                                       int flag) {
+    private static void deleteLogic(PriorityQueue<Integer> maxPq,
+                                    PriorityQueue<Integer> minPq,
+                                    int flag,
+                                    Map<Integer, Integer> checker) {
 
         if (flag == MAX_DEL) {
-            return max_pq.poll();
+            while (true) {
+                Integer maxValue = maxPq.peek();
+                if (maxPq.isEmpty()) {
+                    break;
+                }
+                if (checker.get(maxValue) == 0) {
+                    maxPq.poll();
+                } else {
+                    maxPq.poll();
+                    checker.put(maxValue, checker.get(maxValue) - 1);
+                    break;
+                }
+            }
         } else {
-            return min_pq.poll();
+            while (true) {
+                Integer minValue = minPq.peek();
+                if (minPq.isEmpty()) {
+                    break;
+                }
+                if (checker.get(minValue) == 0) {
+                    minPq.poll();
+                } else {
+                    minPq.poll();
+                    checker.put(minValue, checker.get(minValue) - 1);
+                    break;
+                }
+            }
         }
     }
 }
