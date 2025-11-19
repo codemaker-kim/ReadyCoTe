@@ -93,7 +93,7 @@ public class b14500 {
         }
 
         // ㅓ 자
-        for (int i = 1; i < paper.length - 2; i++) {
+        for (int i = 0; i < paper.length - 2; i++) {
             for (int j = 1; j < paper[i].length; j++) {
                 int tetrominoValue = paper[i][j] + paper[i + 1][j] + paper[i + 1][j - 1] + paper[i + 2][j];
                 if (tetrominoValue > maxValue) {
@@ -252,7 +252,7 @@ public class b14500 {
         }
 
         // z자 반전
-        for (int i = 1; i < paper.length - 1; i++) {
+        for (int i = 1; i < paper.length; i++) {
             for (int j = 0; j < paper[i].length - 2; j++) {
                 int tetrominoValue = paper[i][j] + paper[i][j + 1] + paper[i - 1][j + 1] + paper[i - 1][j + 2];
                 if (tetrominoValue > maxValue) {
