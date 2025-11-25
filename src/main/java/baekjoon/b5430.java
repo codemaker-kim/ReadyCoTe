@@ -3,10 +3,9 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.Deque;
 import java.util.stream.Collectors;
 
 public class b5430 {
@@ -14,7 +13,7 @@ public class b5430 {
     private static char reverse = 'R';
     private static char delete = 'D';
 
-    private static String error = "[error]";
+    private static String error = "error";
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,39 +24,63 @@ public class b5430 {
             String p = br.readLine();
             int n = Integer.parseInt(br.readLine());
             String x = br.readLine();
-            List<Integer> numbers = parseInput(x);
+            Deque<Integer> numbers = parseInput(x);
 
             calculateAC(p, numbers);
         }
     }
 
-    private static List<Integer> parseInput(String x) {
+    private static Deque<Integer> parseInput(String x) {
         String parsed = x.substring(1, x.length() - 1);
 
         if (parsed.isEmpty()) {
-            return List.of();
+            return new ArrayDeque<>();
         }
 
         return Arrays.stream(parsed.split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toCollection(ArrayDeque::new));
     }
 
-    private static void calculateAC(String p, List<Integer> numbers) {
+    private static void calculateAC(String p, Deque<Integer> numbers) {
+        boolean isReversed = false;
+
         for (int index = 0; index < p.length(); index++) {
             char temp = p.charAt(index);
 
             if (temp == reverse) {
-                Collections.reverse(numbers);
+                isReversed = !isReversed;
             } else if (temp == delete) {
                 if (numbers.isEmpty()) {
                     System.out.println(error);
                     return;
                 }
-                numbers.remove(0);
+
+                if (isReversed) {
+                    numbers.pollLast();
+                } else {
+                    numbers.pollFirst();
+                }
             }
         }
 
-        System.out.println(numbers);
+        StringBuilder sb = new StringBuilder("[");
+
+        if (isReversed) {
+            while(!numbers.isEmpty()) {
+                sb.append(numbers.pollLast());
+                if (numbers.peekLast() != null)
+                    sb.append(",");
+            }
+        } else {
+            while(!numbers.isEmpty()) {
+                sb.append(numbers.pollFirst());
+                if (numbers.peekFirst() != null)
+                    sb.append(",");
+            }
+        }
+
+        sb.append("]");
+        System.out.println(sb.toString());
     }
 }
