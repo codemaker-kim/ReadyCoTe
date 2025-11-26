@@ -11,9 +11,9 @@ public class b1043 {
 
     private static boolean[] visited;
     private static Queue<Integer> knowTruthPeoples;
-    private static int[][] matrix;
+    private static List<List<Integer>> parties;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         // 사람의 수
@@ -27,7 +27,7 @@ public class b1043 {
 
         knowTruthPeoples = new LinkedList<>();
         visited = new boolean[N + 1];
-        matrix = new int[M + 1][N + 1];
+        parties = new ArrayList<>();
 
         // 해봐야 50번
         for (int index = 0; index < knowTruthCount; index++) {
@@ -35,7 +35,6 @@ public class b1043 {
 
             knowTruthPeoples.add(peopleNumber);
             visited[peopleNumber] = true;
-
         }
 
         // 50 * 50 -> 2500번 정도
@@ -50,7 +49,9 @@ public class b1043 {
                 partyPeoples.add(people);
             }
 
-            if (partyPeoples.stream().anyMatch(partyPeoples::contains)) {
+            parties.add(partyPeoples);
+
+            if (partyPeoples.stream().anyMatch(knowTruthPeoples::contains)) {
                 partyPeoples
                         .forEach(people -> {
                             if (!knowTruthPeoples.contains(people)) {
@@ -61,14 +62,19 @@ public class b1043 {
             }
         }
 
-
-
         printResult();
 
         sc.close();
     }
 
     private static void printResult() {
+        int result = 0;
+        for (List<Integer> partyPeople: parties) {
+            if (partyPeople.stream().noneMatch(knowTruthPeoples::contains)) {
+                result++;
+            }
+        }
 
+        System.out.println(result);
     }
 }
