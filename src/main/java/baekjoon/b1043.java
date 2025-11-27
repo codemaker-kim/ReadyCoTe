@@ -1,6 +1,5 @@
 package baekjoon;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +8,8 @@ import java.util.Scanner;
 
 public class b1043 {
 
-    private static boolean[] visited;
     private static Queue<Integer> knowTruthPeoples;
+    private static boolean[] visited;
     private static List<List<Integer>> parties;
 
     public static void main(String[] args) {
@@ -26,8 +25,8 @@ public class b1043 {
         int knowTruthCount = Integer.parseInt(sc.next());
 
         knowTruthPeoples = new LinkedList<>();
-        visited = new boolean[N + 1];
         parties = new ArrayList<>();
+        visited = new boolean[N + 1];
 
         // 해봐야 50번
         for (int index = 0; index < knowTruthCount; index++) {
@@ -50,16 +49,6 @@ public class b1043 {
             }
 
             parties.add(partyPeoples);
-
-            if (partyPeoples.stream().anyMatch(knowTruthPeoples::contains)) {
-                partyPeoples
-                        .forEach(people -> {
-                            if (!knowTruthPeoples.contains(people)) {
-                                knowTruthPeoples.add(people);
-                                visited[people] = true;
-                            }
-                        });
-            }
         }
 
         printResult();
@@ -69,10 +58,34 @@ public class b1043 {
 
     private static void printResult() {
         int result = 0;
-        for (List<Integer> partyPeople: parties) {
-            if (partyPeople.stream().noneMatch(knowTruthPeoples::contains)) {
-                result++;
+
+        while(!knowTruthPeoples.isEmpty()) {
+            int peopleNum = knowTruthPeoples.poll();
+
+            for (List<Integer> party : parties) {
+                if (party.contains(peopleNum)) {
+                    party.forEach(people -> {
+                        if (!visited[people]) {
+                            knowTruthPeoples.add(people);
+                            visited[people] = true;
+                        }
+                    });
+                }
             }
+        }
+
+        for (List<Integer> party : parties) {
+            boolean liable = true;
+
+            for (int people : party) {
+                if (visited[people]) {
+                    liable = false;
+                    break;
+                }
+            }
+
+            if (liable)
+                result ++;
         }
 
         System.out.println(result);
