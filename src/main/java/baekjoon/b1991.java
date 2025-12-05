@@ -59,31 +59,63 @@ public class b1991 {
             String right = childNodes[RIGHT_INDEX];
 
             // 스택이기에, 후입선출에 맞추어 오른쪽 노드부터 삽입
-            if(!right.equals(EMPTY)) {
+            if (!right.equals(EMPTY)) {
                 stack.push(right);
             }
 
-            if (!left.equals(EMPTY))
+            if (!left.equals(EMPTY)) {
                 stack.push(left);
+            }
         }
 
         System.out.println(sb.toString());
     }
 
-    // 왼쪽 - 루트 - 오른쪽 우선순위
+    // 왼쪽 - 루트 - 오른쪽 우선순위 (중위 순회)
     private static void inOrder() {
         StringBuilder sb = new StringBuilder();
+        String currNode = ROOT_NODE;
 
-        while (!stack.isEmpty()) {
+        while (!stack.isEmpty() || !currNode.equals(EMPTY)) {
 
+            while (!currNode.equals(EMPTY)) {
+                stack.push(currNode);
+                currNode = nodes.get(currNode)[LEFT_INDEX];
+            }
+
+            currNode = stack.pop();
+            sb.append(currNode);
+
+            currNode = nodes.get(currNode)[RIGHT_INDEX];
         }
-
         System.out.println(sb.toString());
     }
 
     // 왼쪽 - 오른쪽 - 루트 우선순위
     private static void postOrder() {
+        Stack<String> s2 = new Stack<>();
+        stack.push(ROOT_NODE);
+
+        while (!stack.isEmpty()) {
+            String curr = stack.pop();
+            s2.push(curr);
+
+            String left = nodes.get(curr)[LEFT_INDEX];
+            String right = nodes.get(curr)[RIGHT_INDEX];
+
+            if (!left.equals(EMPTY)) {
+                stack.push(left);
+            }
+            if (!right.equals(EMPTY)) {
+                stack.push(right);
+            }
+        }
+
         StringBuilder sb = new StringBuilder();
+
+        while (!s2.isEmpty()) {
+            sb.append(s2.pop());
+        }
 
         System.out.println(sb.toString());
     }
