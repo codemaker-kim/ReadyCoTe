@@ -1,20 +1,21 @@
-SELECT
-    ID
-FROM
-    ECOLI_DATA
-WHERE PARENT_ID IN(
-    SELECT
-        ID
-    FROM
-        ECOLI_DATA
-    WHERE
-        PARENT_ID IN (
-            SELECT
-                ID
-            FROM
-                ECOLI_DATA
-            WHERE
-                PARENT_ID IS NULL
-        )
-)
+SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IN (SELECT ID
+                    FROM ECOLI_DATA
+                    WHERE PARENT_ID IN (SELECT ID
+                                        FROM ECOLI_DATA
+                                        WHERE PARENT_ID IS NULL))
 ORDER BY ID ASC;
+
+-- SELF JOIN 을 이용한 방식
+SELECT G3.ID
+FROM
+    ECOLI_DATA AS G1
+    INNER JOIN ECOLI_DATA AS G2
+        ON G1.ID = G2.PARENT_ID
+    INNER JOIN ECOLI_DATA AS G3
+        ON G2.ID = G3.PARENT_ID
+WHERE
+    G1.PARENT_ID IS NULL
+ORDER BY
+    G3.ID ASC;
