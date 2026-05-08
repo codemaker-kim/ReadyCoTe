@@ -1,4 +1,4 @@
-package programers.dbfs.bruteforce;
+package programers.bruteforce;
 
 import java.util.*;
 
