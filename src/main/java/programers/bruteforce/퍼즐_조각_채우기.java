@@ -7,7 +7,7 @@ class 퍼즐_조각_채우기 {
     static final int[] ny = {0, 0, -1, 1};
 
     public int solution(int[][] game_board, int[][] table) {
-        int answer = -1;
+        int answer = 0;
 
         // 퍼즐 조각 테이블을 순회
         for (int x = 0; x < table.length; x++) {
@@ -16,11 +16,25 @@ class 퍼즐_조각_채우기 {
                 if (table[x][y] == 0)
                     continue;
 
-                // 퍼즐 좌표만 리스트에 넣는다..
+                // 퍼즐을 찾는다.
+                int[][] piece = findPuzzlePiece(x, y, table);
 
+                // 퍼즐이 맞는 위치를 찾는다.
+                answer+=fitPuzzle(piece, game_board);
             }
         }
 
         return answer;
+    }
+
+    private int[][] findPuzzlePiece(int x, int y, int[][] table) {
+        // 퍼즐의 최대 사이즈로 생성
+        int[][] result = new int[6][6];
+
+        return result;
+    }
+
+    private int fitPuzzle(int[][] piece, int[][] gameBoard) {
+        return 0;
     }
 }
