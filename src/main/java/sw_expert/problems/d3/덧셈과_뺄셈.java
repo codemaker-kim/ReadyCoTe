@@ -2,7 +2,7 @@ package sw_expert.problems.d3;
 
 import java.util.Scanner;
 
-public class P26792 {
+public class 덧셈과_뺄셈 {
     public static void main(String args[]) throws Exception {
         Scanner sc = new Scanner(System.in);
         int T;
